@@ -317,6 +317,7 @@ def play_game():
         elif response == "GUIDE":
             print print_guide()
         elif response == "SOLVE":
+            print "Here is the solution you requested. Want to play again? Rerun the program!"
             print print_grid_from_vals(solved_dict)
             break
         else:
