@@ -217,6 +217,10 @@ def generate_value_dict(mygrid):
     return value_dict
 
 def generate_grid(poss_values):
+    """
+    Given a value dictionary, poss_values, generate an 81-character string that represents the current state of the sudoku grid.
+    Unfilled squares are represented by a period, '.'
+    """
     mygrid = ''
     for s in SQUARES:
         if len(poss_values[s]) == 1:
@@ -224,10 +228,6 @@ def generate_grid(poss_values):
         else:
             mygrid += '.'
     return mygrid
-#A1 is idx 0
-#B1 is idx 9
-#C1 is idx 18
-
 
 ### SOLVE PUZZLE
 
