@@ -81,7 +81,8 @@ def print_guide():
         idx += 1 
     return final_rep
 
-### ASSIGN VALUES
+### FUNCTIONS NEEDED TO ASSIGN VALUES
+
 def find_neighbors(target_square):
     """
     return a list of the square names that are in the same minigrid, row and column
@@ -129,28 +130,6 @@ def assign_value(poss_values, target_square, myguess):
             if not remove_poss(poss_values, target_square, v):
                 return False
     return poss_values
-
-def check_if_valid(poss_values, target_square, myguess):
-    same_row = [target_square[0] + str(x) for x in range(1, 10)]
-    same_col = [c + target_square[1] for c in ROWS]
-    same_col.remove(target_square)
-    same_row.remove(target_square)
-    for n in find_neighbors(target_square):
-        if poss_values[n] == myguess:
-            return False
-    for r in same_row:
-        if poss_values[r] == myguess:
-            return False
-    for c in same_col:
-        if poss_values[c] == myguess:
-            return False
-    return True
-
-def check_if_assigned(target_square, poss_values):
-    current_grid = generate_grid(poss_values)
-    if current_grid[SQUARES.index(target_square)] == '.':
-        return False
-    return True
 
 
 def remove_poss(poss_values, target_square, unwanted):
@@ -294,6 +273,7 @@ def solve_puzzle(orig_grid, myvals):
         # if we are successful at assigning value_is to selection square, call solve_puzzle() again using the updated value dict, vals_copy 
         return solve_puzzle(orig_grid, vals_copy)
 
+### FUNCTIONS FOR GAME PLAY  
 
 def fill_in_random(current_grid):
     """Input: current grid as a string. Return a random square that has not already been filled in"""
